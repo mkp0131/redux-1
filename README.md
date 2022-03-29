@@ -194,7 +194,56 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 리덕스의 코드가 많아지는 것을 도와준다.
 
 1. createAction(타입): action 을 동적으로 생성하더 함수를 대체
+
+```js
+const addTodo = createAction('ADD_TODO');
+// addTodo 라는 action 생성함수가 생성되었다.
+// 생성함수(인자)는 action.payload 에 값이 담긴다. 예) id, text 등등
+```
+
 2. createReducer(state, action): switch 문으로 동작하던 reducer 함수를 간단하게 표현
+
+```js
+// 첫번째 인자로 state 의 기본값, 두번째 인자는 dispatch obj
+// obj 의 키는 createAction() 에서 생성된 값을 바로 넣을 수 있다.
+// 🧤 state 의 상태를 변경하는 것이 가능하다! 상태변경이 경우 값을 return 하면 안된다.
+const reducer = createReducer([], {
+  [addToDo]: (state, action) => {
+    state.push({ text: action.payload, id: Date.now() });
+  },
+  [deleteToDo]: (state, action) =>
+    state.filter((toDo) => toDo.id !== action.payload),
+});
+```
+
 3. configureStore({createReducer()}): Redux devtool(크롬확장) 사용가능 / createStore 대신해서 사용
-4. createSlice({reducer 세팅값}): createAction(), createReducer() 를 동시에 사용.
+
+```js
+const store = configureStore({ reducer: todoReducer });
+```
+
+4. 🧤🧤🧤 createSlice({reducer 세팅값}): createAction(), createReducer() 를 동시에 사용.
 5. configureStore 를 실행할때 createSlice().reducer 를 인자로 준다.
+
+```js
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+
+const todoReducer = createSlice({
+  name: 'todo',
+  initialState: [],
+  reducers: {
+    add(state, action) {
+      state.push({ text: action.payload, id: Date.now() });
+    },
+    remove(state, action) {
+      return state.filter((todo) => todo.id !== action.payload);
+    },
+  },
+});
+
+export const { add, remove } = todoReducer.actions;
+
+const store = configureStore({ reducer: todoReducer.reducer });
+
+export default store;
+```

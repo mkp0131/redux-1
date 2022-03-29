@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { actionCreator } from 'store';
+import { remove } from 'store';
 
 const dateFormatTxt = (timestamp) => {
   const date = new Date(timestamp);
@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTodo: (id) => dispatch(actionCreator.deleteTodo(id)),
+    deleteTodo: (id) => dispatch(remove(id)),
   };
 };
 

@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { actionCreator } from 'store';
+import { remove } from 'store';
 
 const Todo = ({ id, text, deleteTodo }) => {
-  // console.log('Todo 😀', todo);
-
   const onClickDelete = (event) => {
     event.preventDefault();
     deleteTodo();
@@ -22,7 +20,7 @@ const Todo = ({ id, text, deleteTodo }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    deleteTodo: () => dispatch(actionCreator.deleteTodo(ownProps.id)),
+    deleteTodo: () => dispatch(remove(ownProps.id)),
   };
 };
 
