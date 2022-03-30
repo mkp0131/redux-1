@@ -1,6 +1,7 @@
 :root {
-  --main-color1: red;
-  --ctn-bg: rgb(235 235 235 / 40%);
+  --main-color1: rgb(187, 255, 0);
+  --main-color2: rgb(255, 72, 0);
+  --ctn-bg: rgb(98 98 98 / 40%);
 }
 
 html,
@@ -45,6 +46,7 @@ header h1 {
   margin-bottom: 0.2em;
   font-size: 1.5rem;
   color: var(--main-color1);
+  text-align: center;
 }
 header form {
   display: flex;
@@ -71,6 +73,9 @@ ul {
   list-style: none;
   overflow: auto;
 }
+ul::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
 ul li {
   /* border: 1px solid #ccc; */
   padding: 1em;
@@ -79,12 +84,13 @@ ul li {
 }
 ul li a {
   font-size: 1.25rem;
+  color: var(--main-color1);
 }
 ul li button {
   margin-left: 10px;
   border: none;
   background: transparent;
-  color: var(--main-color1);
+  color: var(--main-color2);
   cursor: pointer;
 }
 
@@ -95,7 +101,9 @@ ul li button {
   flex-direction: column;
   height: 100vh;
   background: var(--ctn-bg);
+  color: var(--main-color1);
   padding: 1em;
+  box-sizing: border-box;
 }
 .detail-container h2 {
   font-size: 2rem;
@@ -107,14 +115,14 @@ ul li button {
 .btn {
   border: none;
   background: transparent;
-  color: var(--main-color1);
+  color: var(--main-color2);
   cursor: pointer;
 }
 .btn-home {
   position: fixed;
   left: 10px;
   top: 10px;
-  color: #000;
+  color: var(--main-color1);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -123,5 +131,5 @@ ul li button {
   width: 13px;
 }
 .btn-home svg path {
-  fill: #000;
+  fill: var(--main-color1);
 }

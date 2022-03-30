@@ -24,7 +24,7 @@ const HomeRedux = ({ todoList, addTodo, deleteTodo }) => {
   return (
     <div className="home-container">
       <header>
-        <h1>TodoJS - Redux</h1>
+        <h1>오늘 해야할 일은 무엇인가요?</h1>
         <form onSubmit={onSubmit}>
           <input
             type="text"
