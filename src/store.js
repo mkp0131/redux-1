@@ -1,14 +1,25 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
+const STORAGE_KEY = 'todoJS';
+
+const saveLocalStorage = (data) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+};
+
+const initialState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
 const todoReducer = createSlice({
   name: 'todo',
-  initialState: [],
+  initialState,
   reducers: {
     add(state, action) {
-      state.push({ text: action.payload, id: Date.now() });
+      state.unshift({ text: action.payload, id: Date.now() });
+      saveLocalStorage(state);
     },
     remove(state, action) {
-      return state.filter((todo) => todo.id !== action.payload);
+      const new_state = state.filter((todo) => todo.id !== action.payload);
+      saveLocalStorage(new_state);
+      return new_state;
     },
   },
 });

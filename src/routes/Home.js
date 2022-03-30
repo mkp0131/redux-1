@@ -14,23 +14,34 @@ const HomeRedux = ({ todoList, addTodo, deleteTodo }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+
+    if (!todo) return;
+
     setTodo('');
     addTodo(todo);
   };
 
   return (
-    <>
-      <h1>Todo - Redux</h1>
-      <form onSubmit={onSubmit}>
-        <input type="text" name="todo" onChange={onChange} value={todo} />
-        <button type="submit">확인</button>
-      </form>
+    <div className="home-container">
+      <header>
+        <h1>TodoJS - Redux</h1>
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="todo"
+            onChange={onChange}
+            value={todo}
+            autoComplete="off"
+          />
+          <button type="submit">확인</button>
+        </form>
+      </header>
       <ul>
         {todoList.map((todo) => (
           <Todo {...todo} key={todo.id} />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

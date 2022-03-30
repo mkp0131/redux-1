@@ -10,10 +10,8 @@ const Todo = ({ id, text, deleteTodo }) => {
 
   return (
     <li>
-      <Link to={`/detail/${id}`}>
-        {text}
-        <button onClick={onClickDelete}>삭제</button>
-      </Link>
+      <Link to={`/detail/${id}`}>{text}</Link>
+      <button onClick={onClickDelete}>삭제</button>
     </li>
   );
 };

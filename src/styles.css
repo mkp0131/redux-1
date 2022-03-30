@@ -1,0 +1,127 @@
+:root {
+  --main-color1: red;
+  --ctn-bg: rgb(235 235 235 / 40%);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+body {
+  background: #ccc;
+  background-position: 0% 0%;
+  background-size: cover;
+  overflow: auto;
+  box-sizing: border-box;
+  transition: background 1.5s linear;
+}
+
+a {
+  color: inherit;
+}
+
+.home-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px auto;
+  background: var(--ctn-bg);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+header h1 {
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  font-size: 1.5rem;
+  color: var(--main-color1);
+}
+header form {
+  display: flex;
+  border-bottom: 1px solid var(--main-color1);
+}
+header form input {
+  border: none;
+  background: transparent;
+  padding: 0.5em;
+  font-size: 1rem;
+  outline: none;
+  color: #fff;
+}
+header form button {
+  border: none;
+  background: transparent;
+  color: var(--main-color1);
+  font-weight: 700;
+}
+
+ul {
+  padding: 1em;
+  margin: 0;
+  list-style: none;
+  overflow: auto;
+}
+ul li {
+  /* border: 1px solid #ccc; */
+  padding: 1em;
+  border-radius: 5px;
+  text-align: center;
+}
+ul li a {
+  font-size: 1.25rem;
+}
+ul li button {
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  color: var(--main-color1);
+  cursor: pointer;
+}
+
+.detail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--ctn-bg);
+  padding: 1em;
+}
+.detail-container h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  background: transparent;
+  color: var(--main-color1);
+  cursor: pointer;
+}
+.btn-home {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn-home svg {
+  width: 13px;
+}
+.btn-home svg path {
+  fill: #000;
+}
